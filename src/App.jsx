@@ -1,5 +1,6 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import { HashRouter, Navigate, Route, Routes } from "react-router-dom";
+// import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { CitiesProvider } from "./contexts/CitiesContext";
 import { AuthProvider } from "./contexts/FakeAuthContext";
@@ -30,7 +31,7 @@ export default function App() {
     <div>
       <AuthProvider>
         <CitiesProvider>
-          <BrowserRouter>
+          <HashRouter>
             <Suspense fallback={<SpinnerFullPage />}>
               <Routes>
                 <Route index element={<HomePage />} />
@@ -54,7 +55,7 @@ export default function App() {
                 <Route path="*" element={<PageNotFound />} />
               </Routes>
             </Suspense>
-          </BrowserRouter>
+          </HashRouter>
         </CitiesProvider>
       </AuthProvider>
     </div>
