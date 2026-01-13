@@ -1,4 +1,5 @@
 import { useContext, createContext, useReducer } from "react";
+import myAvatar from "../assets/my-avatar.png";
 
 const AuthContext = createContext();
 
@@ -19,10 +20,10 @@ function reducer(state, action) {
 }
 
 const FAKE_USER = {
-  name: "Jack",
-  email: "jack@example.com",
+  name: "Hafeez Ullah",
+  email: "hafeez@example.com",
   password: "qwerty",
-  avatar: "https://i.pravatar.cc/100?u=zz",
+  avatar: myAvatar,
 };
 
 function AuthProvider({ children }) {
