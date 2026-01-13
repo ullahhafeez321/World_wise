@@ -68,7 +68,10 @@ function CitiesProvider({ children }) {
 
         // New fetch for static JSON in public folder
         const res = await fetch("/data/cities.json");
-        const data = await res.json();
+        const jsonData = await res.json();
+
+        // Extract cities array safely
+        const data = Array.isArray(jsonData.cities) ? jsonData.cities : [];
 
         dispatch({ type: "cities/loaded", payload: data });
       } catch {
@@ -93,10 +96,13 @@ function CitiesProvider({ children }) {
         // const res = await fetch(`${BASE_URL}/cities/${id}`);
         // const data = await res.json();
 
-        // New: fetch static JSON & filter
+        // New: fetch static JSON & filter by id
         const res = await fetch("/data/cities.json");
-        const allCities = await res.json();
-        const data = allCities.find((city) => city.id === Number(id)) || {};
+        const jsonData = await res.json();
+        const allCities = Array.isArray(jsonData.cities) ? jsonData.cities : [];
+
+        // Find city by id
+        const data = allCities.find((city) => city.id === id) || {};
 
         dispatch({ type: "city/loaded", payload: data });
       } catch {
@@ -125,7 +131,7 @@ function CitiesProvider({ children }) {
       */
 
       // New: simulate creation by assigning an ID
-      const data = { ...newCity, id: Date.now() };
+      const data = { ...newCity, id: Date.now().toString() };
 
       dispatch({ type: "city/created", payload: data });
     } catch {
