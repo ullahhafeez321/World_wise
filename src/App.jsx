@@ -12,7 +12,7 @@ import ProtectedRoute from "./pages/ProtectedRoute";
 // import AppLayout from "./pages/AppLayout";
 // import Login from "./pages/Login";
 
-const HomePage = lazy(() => import("./pages/HomePage"));
+const HomePage = lazy(() => import("./pages/Homepage"));
 const Product = lazy(() => import("./pages/Product"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const AppLayout = lazy(() => import("./pages/AppLayout"));
