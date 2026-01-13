@@ -5,4 +5,5 @@ import eslint from "vite-plugin-eslint";
 // https://vite.dev/configs/
 export default defineConfig({
   plugins: [react(), eslint({ fix: false, failOnError: false })],
+  base: "/World_wise/",
 });

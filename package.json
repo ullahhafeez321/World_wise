@@ -3,11 +3,10 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  
   "homepage": "https://ullahhafeez321.github.io/World_wise",
   "scripts": {
-     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
@@ -15,6 +14,7 @@
     "server": "json-server --watch data/cities.json --port=5000 "
   },
   "dependencies": {
+    "gh-pages": "^6.3.0",
     "leaflet": "^1.9.4",
     "react": "^18.3.1",
     "react-datepicker": "^9.1.0",
