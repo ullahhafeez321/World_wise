@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ullahhafeez321.github.io/World_wise",
+  "homepage": "https://ullahhafeez321.github.io/World_wise/",
   "scripts": {
   "predeploy": "npm run build",
   "deploy": "gh-pages -d dist",
