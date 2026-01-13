@@ -1,0 +1,52 @@
+{
+  "cities": [
+    {
+      "id": "0e62",
+      "cityName": "Jiwani",
+      "country": "Pakistan",
+      "emoji": "🇵🇰",
+      "date": "2025-12-30T16:33:26.650Z",
+      "notes": "",
+      "position": {
+        "lat": "25.05152475232305",
+        "lng": "61.74385070800782"
+      }
+    },
+    {
+      "id": "7c03",
+      "cityName": "Adam",
+      "country": "Oman",
+      "emoji": "🇴🇲",
+      "date": "2025-12-30T16:33:28.867Z",
+      "notes": "",
+      "position": {
+        "lat": "22.441370098467253",
+        "lng": "57.21679687500001"
+      }
+    },
+    {
+      "id": "58cc",
+      "cityName": "Central District",
+      "country": "Iran (Islamic Republic of)",
+      "emoji": "🇮🇷",
+      "date": "2025-12-30T18:06:12.243Z",
+      "notes": "",
+      "position": {
+        "lat": "25.4739224469058",
+        "lng": "60.67199707031251"
+      }
+    },
+    {
+      "id": "df96",
+      "cityName": "Gwadar",
+      "country": "Pakistan",
+      "emoji": "🇵🇰",
+      "date": "2025-12-30T18:07:58.654Z",
+      "notes": "",
+      "position": {
+        "lat": "25.145521075175424",
+        "lng": "62.324752807617195"
+      }
+    }
+  ]
+}
