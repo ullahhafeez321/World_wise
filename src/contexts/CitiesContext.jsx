@@ -7,7 +7,12 @@ import {
 } from "react";
 
 const CitiesContext = createContext();
-const BASE_URL = "http://localhost:5000";
+
+// Old BASE_URL for local JSON server
+// const BASE_URL = "http://localhost:5000";
+
+// New BASE_URL for static JSON in public folder
+const BASE_URL = "";
 
 const InitialState = {
   cities: [],
@@ -51,12 +56,18 @@ function CitiesProvider({ children }) {
     InitialState
   );
 
+  // Fetch all cities from static JSON
   useEffect(() => {
     async function fetchCities() {
       try {
         dispatch({ type: "loading" });
 
-        const res = await fetch(`${BASE_URL}/cities`);
+        // Old fetch for local JSON server
+        // const res = await fetch(`${BASE_URL}/cities`);
+        // const data = await res.json();
+
+        // New fetch for static JSON in public folder
+        const res = await fetch("/data/cities.json");
         const data = await res.json();
 
         dispatch({ type: "cities/loaded", payload: data });
@@ -70,14 +81,22 @@ function CitiesProvider({ children }) {
     fetchCities();
   }, []);
 
+  // Get city by id
   const getCity = useCallback(
     async function getCity(id) {
       if (Number(id) === currentCity.id) return;
 
       try {
         dispatch({ type: "loading" });
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
-        const data = await res.json();
+
+        // Old fetch for local JSON server
+        // const res = await fetch(`${BASE_URL}/cities/${id}`);
+        // const data = await res.json();
+
+        // New: fetch static JSON & filter
+        const res = await fetch("/data/cities.json");
+        const allCities = await res.json();
+        const data = allCities.find((city) => city.id === Number(id)) || {};
 
         dispatch({ type: "city/loaded", payload: data });
       } catch {
@@ -90,19 +109,24 @@ function CitiesProvider({ children }) {
     [currentCity.id]
   );
 
+  // Create city (won't persist on Netlify; just updates state)
   async function createCity(newCity) {
     try {
       dispatch({ type: "loading" });
 
+      // Old POST to JSON server
+      /*
       const res = await fetch(`${BASE_URL}/cities`, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newCity),
       });
-
       const data = await res.json();
+      */
+
+      // New: simulate creation by assigning an ID
+      const data = { ...newCity, id: Date.now() };
+
       dispatch({ type: "city/created", payload: data });
     } catch {
       dispatch({
@@ -112,13 +136,15 @@ function CitiesProvider({ children }) {
     }
   }
 
+  // Delete city (won't persist; just updates state)
   async function deleteCity(id) {
     try {
       dispatch({ type: "loading" });
-      await fetch(`${BASE_URL}/cities/${id}`, {
-        method: "DELETE",
-      });
 
+      // Old DELETE to JSON server
+      // await fetch(`${BASE_URL}/cities/${id}`, { method: "DELETE" });
+
+      // New: simulate deletion
       dispatch({ type: "city/deleted", payload: id });
     } catch {
       dispatch({
